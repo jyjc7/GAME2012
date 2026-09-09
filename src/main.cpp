@@ -1,11 +1,23 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <iostream>
+#include <random>
+
+float RandomFloat(float min, float max)
+{
+	static std::random_device rd;
+	static std::mt19937 gen(rd());
+	std::uniform_real_distribution<float> dis(min, max);
+	return dis(gen);
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 int main(void)
 {
 
-	constexpr int WIDTH = 800;
-	constexpr int HEIGHT = 600;
+	constexpr int SCREEN_WIDTH = 800;
+	constexpr int SCREEN_HEIGHT = 600;
 
     GLFWwindow* window;
 
@@ -27,11 +39,20 @@ int main(void)
 	// Load OpenGL 4.6
     gladLoadGL();
 
+    glfwSetKeyCallback(window, key_callback);
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+
+		float x = RandomFloat(0, SCREEN_WIDTH);
+		float y = RandomFloat(0, SCREEN_HEIGHT);
+
+        glfwSetCursorPos(window, x, y);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
@@ -42,4 +63,18 @@ int main(void)
 
     glfwTerminate();
     return 0;
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	const char* getkeyname = glfwGetKeyName(key, scancode);
+
+    if (action == GLFW_PRESS)
+        printf(getkeyname);
+
+    if (key == GLFW_KEY_E && action == GLFW_PRESS)
+		printf("E key pressed\n");
+
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
 }
