@@ -1,8 +1,12 @@
-#include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
 int main(void)
 {
+
+	constexpr int WIDTH = 800;
+	constexpr int HEIGHT = 600;
+
     GLFWwindow* window;
 
     /* Initialize the library */
@@ -19,6 +23,7 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
 	// Load OpenGL 4.6
     gladLoadGL();
 
