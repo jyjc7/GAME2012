@@ -13,6 +13,17 @@
   <ItemGroup>
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\Windows.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\raymath.h" />
+    <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\a1_triangle.frag" />
+    <None Include="assets\shaders\a1_triangle.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
