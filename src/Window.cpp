@@ -160,7 +160,7 @@ int WindowHeight()
 	return height;
 }
 
-float Time()
+float Time()  
 {
 	return glfwGetTime();
 }
